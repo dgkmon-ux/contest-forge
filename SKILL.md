@@ -1,7 +1,23 @@
 ---
 name: contest-forge
-description: 공모전·해커톤을 요강 분석 → 아이디어 선별 → MVP → 발표자료까지 한 파이프라인으로 진행한다. "공모전 준비", "해커톤 나가려고", "공모전 기획안 짜줘", "이 공고 분석해줘", "발표자료 만들어줘", "피치덱", hackathon, contest, pitch deck 같은 요청에 사용. 아이디어 공모전·해커톤·창업지원사업·AI Nativeness 트랙을 모두 다룬다.
+description: 공모전·해커톤을 요강 분석 → 아이디어 선별 → MVP → 발표자료까지 한 파이프라인으로 진행한다. 아이디어 공모전·해커톤·창업지원사업·AI Nativeness 트랙을 다룬다. `/contest-forge`로 직접 호출한다.
+argument-hint: "[slug 또는 새 공모전 이름]"
+disable-model-invocation: true
 ---
+
+<!--
+disable-model-invocation: 이 스킬은 홈 디렉터리에 폴더를 만들고 여러 단계에 걸친 긴
+파이프라인을 시작한다. "발표자료 만들어줘" 같은 일반 요청에 자동 발동하면 곤란하므로
+사용자가 /contest-forge로 명시 호출할 때만 뜨게 한다.
+
+주의: argument-hint와 disable-model-invocation은 Claude Code 전용 필드다. claude.ai
+업로드나 Skills API로 패키징하면 허용 필드(name/description/license/compatibility/
+metadata/allowed-tools) 밖이라 하드 에러가 난다. 그 경로로 배포하려면 두 줄을 지운다.
+-->
+
+<!-- 형식 규약: 이 스킬 안의 `§n` 참조는 항상 같은 파일 안의 절을 가리킨다.
+     다른 파일을 가리킬 때는 반드시 `3-mvp.md §4`처럼 파일명을 붙인다. -->
+
 
 # contest-forge — 공모전 파이프라인
 
@@ -67,7 +83,7 @@ D-day는 `brief.md`의 마감일과 오늘 날짜로 계산한다. 마감을 모
 
 | 단계 | 지시문 | 산출 | 게이트 |
 |---|---|---|---|
-| ① recon | `references/1-recon.md` | brief.md, rubric.md | 🚧 필수항목 미확인 시 ②로 못 감 |
+| ① recon | `references/1-recon.md` | brief.md, rubric.md | 🚧 참가 자격·필수항목 미확인 시 ②로 못 감. 자격 미달 확인 시 즉시 중단 |
 | ② ideate | `references/2-ideate.md` | research.md, ideas.md | 🚧 사용자가 1개 고를 때까지 정지 |
 | ③ mvp | `references/3-mvp.md` | plan.md, mvp/ | — |
 | ④ report | `references/4-report.md` | submission.md, deck.html, script.md | 제출 규격 검사 |
