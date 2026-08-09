@@ -74,9 +74,25 @@ references/1-recon.md         요강 구조화 · 심사표 정규화
 assets/plan.template.md       15섹션 기획안 골격
        STATE.template.md
        rubrics/*.md           유형별 루브릭 프리셋 4종
+examples/sample-contest/      가상 공모전 1건의 형식 예시
+scripts/check-docs.sh         문서 정합성 검사
 ```
 
 단계에 진입할 때 해당 reference만 읽는다(progressive disclosure). SKILL.md는 라우팅과 규약만 담는다.
+
+## 문서 정합성 검사
+
+파일 여러 개가 서로를 참조하는 구조라 한쪽만 고쳐서 생기는 모순이 반복해서 나왔다. 사람 눈으로는 계속 놓쳐서 기계로 잡는다.
+
+```bash
+bash scripts/check-docs.sh
+```
+
+검사 항목 — frontmatter 필수 키, `§n` 교차참조 유효성(파일·절 단위), 참조한 파일의 존재, 4단계와 루브릭 프리셋 연결, 과거에 실제로 났던 모순 패턴의 재발, 공개본 유출 표현(`--public`).
+
+`§n` 표기 규약: 같은 파일의 절을 가리킨다. 다른 파일이면 `plan.md §12`처럼 파일명을 앞에 붙인다. 이 규약을 깨면 검사기가 잡는다.
+
+`examples/sample-contest/`는 산출물이 어떤 모양이어야 하는지 보여주는 가상 사례다. 배점이 `rubric.md`와 일치하는지, 주최사 적합도가 점수에 섞이지 않았는지, 견적서의 약점 항목이 채워졌는지를 눈으로 확인하는 기준선으로 쓴다.
 
 ## 루브릭 프리셋에 대하여
 
