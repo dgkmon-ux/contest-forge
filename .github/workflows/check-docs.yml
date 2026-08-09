@@ -1,0 +1,14 @@
+name: check-docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 문서 정합성 + 유출 검사
+        run: bash scripts/check-docs.sh --public
