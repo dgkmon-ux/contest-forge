@@ -2,7 +2,7 @@
 
 ```yaml
 slug: <slug>
-type: idea-contest | hackathon | startup-grant | ai-nativeness
+type: idea-contest | analysis-model | hackathon | startup-grant | ai-nativeness
 deadline: YYYY-MM-DD
 current_stage: ①recon | ②ideate | ③mvp | ④report | 완료
 updated: YYYY-MM-DD
@@ -12,8 +12,14 @@ updated: YYYY-MM-DD
 
 | 게이트 | 상태 | 비고 |
 |---|---|---|
-| ① 요강 필수항목 확인 | 대기 / 통과 / 강제통과 | 강제통과 시 무엇을 모른 채 진행하는지 |
+| ① 요강 필수항목 확인 | 대기 / 통과 / **조건부통과** / 강제통과 | 조건부·강제통과 시 무엇을 모른 채 진행하는지, **막혔을 때 무엇이 틀어지는지**, 해소 기한 |
 | ② 아이디어 선택 | 대기 / 통과 | 선택한 안 |
+
+조건부통과일 때는 아래 표를 함께 채운다.
+
+| 미확인 항목 | 종류 | 막히면 틀어지는 것 | 해소 기한 | 문의 발송 |
+|---|---|---|---|---|
+| 예: 기획서 분량 | 자료에 없음 | ④에서 규격 위반 → 탈락 | ④진입 전 | 2026-XX-XX |
 
 ## 결정 기록
 
